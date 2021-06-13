@@ -1,0 +1,23 @@
+﻿@model mge.ViewModels.Categoria.DeletarViewModel
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="container">
+    <form method="post" action="/Categoria/Deletar/@Model.Id">
+    <h1 class="text-center">Deletar categoria</h1>
+    <ul class="list-group mt-2">
+        <li class="list-group-item">Descrição : @Model.Descricao</li>
+        <li class="list-group-item">Sub categoria de : @Model.NomeCategoriaPai</li>
+    </ul>
+    <p class="text-center mt-2">
+        Tem certeza que deseja remover essa categoria?
+    </p>
+    <p class="text-center">
+        <button type="submit" class="btn btn-danger">Sim</button>
+        &nbsp; &nbsp;
+        <a href="/Categoria" class="btn-link">Não, voltar</a>
+    </p>
+    </form>
+</div>

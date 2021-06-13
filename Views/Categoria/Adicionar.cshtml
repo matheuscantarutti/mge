@@ -1,0 +1,33 @@
+﻿@model mge.ViewModels.Categoria.AdicionarViewModel
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="container">
+    <form action="/Categoria/Adicionar" method="post">
+        <h1 class="text-center">Adicionar categoria</h1>
+        @if (@Model.errors != null)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in @Model.errors)
+                    {
+                        <span>@error</span>
+                    }
+            </div>
+        }
+        <div class="form-group">
+            <label for="Descricao">Descrição</label>
+            <input type="text" class="form-control" id="Descricao" name="Descricao">
+        </div>
+        <div class="form-group">
+            <label for="CategoriaPai">Sub categoria de</label>
+            <select class="form-control" asp-items="@Model.CategoriasPai" id="CategoriaPai" name="CategoriaPai"></select>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            &nbsp; &nbsp; 
+            <a href="/Categoria">Voltar</a>
+        </div>
+    </form>
+</div>

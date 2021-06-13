@@ -1,0 +1,61 @@
+@model mge.ViewModels.Categoria.IndexViewModel 
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="container">
+    <h1 class="text-center">Categorias</h1>
+    <a href="/Categoria/Adicionar" class="btn btn-primary">Adicionar</a>
+    @if (@Model.Error != null)
+    {
+        <div class="alert alert-danger mt-2">
+            <span>@Model.Error</span>
+        </div>
+    }
+    @if (@Model.Mensagem != null)
+    {
+        <div class="alert alert-success mt-2">
+            <span>@Model.Mensagem</span>
+        </div>
+    }
+    <table class="table w-full mt-2">
+        <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Subcategoria
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach(var ce in @Model.Categorias)
+        {
+            <tr>
+                <td>@ce.Id</td>
+                <td>@ce.Descricao</td>
+                @if (@ce.CategoriaPaiId != 0)
+                {
+                    <td>Sim</td>
+                }
+                else
+                {
+                    <td>Não</td>
+                }
+                <td>
+                    <a class="text-primary" href="/Categoria/Editar/@ce.Id">Editar</a>
+                    &nbsp; &nbsp;
+                    <a class="text-danger" href="/Categoria/Deletar/@ce.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
