@@ -1,0 +1,49 @@
+@model mge.ViewModels.Item.AdicionarViewModel
+
+@{
+    ViewData["Title"] = "Itens";
+}
+
+<div class="container">
+    <form action="/Item/Adicionar" method="post">
+        <h1 class="text-center">Adicionar categoria</h1>
+        @if (@Model.errors != null)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in @Model.errors)
+                    {
+                        <span>@error</span>
+                    }
+            </div>
+        }
+        <div class="form-group">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="Nome" name="Nome">
+        </div>
+        <div class="form-group">
+            <label for="Descricao">Descrição</label>
+            <input type="text" class="form-control" id="Descricao" name="Descricao">
+        </div>
+        <div class="form-group">
+            <label for="Data">Data</label>
+            <input type="date" class="form-control" id="Data" name="Data">
+        </div>
+        <div class="form-group">
+            <label for="Categoria">Categoria</label>
+            <select class="form-control" asp-items="@Model.Categorias" id="Categoria" name="Categoria"></select>
+        </div>
+        <div class="form-group">
+            <label for="ConsumoWatts">Consumo Watts</label>
+            <input type="number" class="form-control" id="ConsumoWatts" name="ConsumoWatts">
+        </div>
+        <div class="form-group">
+            <label for="HorasUsoDiario">Horas uso por dia</label>
+            <input type="number" class="form-control" id="HorasUsoDiario" name="HorasUsoDiario">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            &nbsp; &nbsp; 
+            <a href="/Item">Voltar</a>
+        </div>
+    </form>
+</div>

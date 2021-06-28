@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mge.Data;
 
 namespace mge.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210627023350_ItemTable")]
+    partial class ItemTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace mge.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("ConsumoWatts")
-                        .HasColumnType("decimal(15,2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<DateTime>("DataFabricacao")
                         .HasColumnType("datetime");

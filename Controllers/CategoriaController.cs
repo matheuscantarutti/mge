@@ -78,6 +78,7 @@ namespace mge.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult Editar(int id)
         {
             try

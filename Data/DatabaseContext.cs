@@ -1,5 +1,6 @@
 ﻿using mge.Models.Categoria;
 using mge.Models.Parametro;
+using mge.Models.Item;
 using Microsoft.EntityFrameworkCore;
 
 namespace mge.Data
@@ -8,6 +9,7 @@ namespace mge.Data
     {
         public DbSet<ParametroEntity> Parametros { get; set; }
         public DbSet<CategoriaEntity> Categorias { get; set; }
+        public DbSet<ItemEntity> Items { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
     }
 }
