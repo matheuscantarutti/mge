@@ -37,7 +37,18 @@ namespace mge.Controllers
 
             var lista = _itemService.ObterTodos();
 
-            vm.Items = lista;
+            foreach (var item in lista)
+            {
+                vm.Items.Add(new Item(){
+                    Id = item.Id.ToString(),
+                    Nome = item.Nome,
+                    Descricao = item.Descricao,
+                    DataFabricacao = item.DataFabricacao.ToShortDateString(),
+                    Categoria = item.Categoria.Descricao,
+                    ConsumoWatts = item.ConsumoWatts.ToString("C"),
+                    HorasUsoDiario = item.HorasUsoDiario
+                });
+            }
             
             return View(vm);
         }

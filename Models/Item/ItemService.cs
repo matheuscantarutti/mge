@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using mge.Data;
 using mge.Models.Categoria;
+using Microsoft.EntityFrameworkCore;
 
 namespace mge.Models.Item
 {
@@ -18,7 +19,7 @@ namespace mge.Models.Item
 
         public ICollection<ItemEntity> ObterTodos()
         {
-            return _databaseContext.Items.ToList();
+            return _databaseContext.Items.Include(c => c.Categoria).ToList();
         }
         
         public ItemEntity ObterPorId(int id)
@@ -76,7 +77,7 @@ namespace mge.Models.Item
             
             entidade.Nome = dadosBasicos.Nome;
             entidade.Descricao = dadosBasicos.Descricao ?? null;
-            entidade.DataFabricacao = dadosBasicos.DataFabricacao;
+            entidade.DataFabricacao = DateTime.Parse(dadosBasicos.DataFabricacao);
             entidade.ConsumoWatts = dadosBasicos.ConsumoWatts;
             var categoria = _databaseContext.Categorias.First(c => c.Id == dadosBasicos.Categoria);
             entidade.Categoria = categoria;
@@ -97,7 +98,7 @@ namespace mge.Models.Item
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public DateTime DataFabricacao { get; set; }
+        public string DataFabricacao { get; set; }
         public int Categoria {get; set;}
         public decimal ConsumoWatts {get; set;}
         public int HorasUsoDiario {get; set;}
