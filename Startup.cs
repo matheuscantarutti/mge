@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using mge.Data;
 using mge.Models.Categoria;
 using mge.Models.Item;
+using mge.Models.Parametro;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,7 @@ namespace mge
 
             services.AddTransient<CategoriaService>();
             services.AddTransient<ItemService>();
+            services.AddTransient<ParametroService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

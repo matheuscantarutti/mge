@@ -1,8 +1,58 @@
+@model mge.ViewModels.Parametro.IndexViewModel
 @{
     ViewData["Title"] = "Parâmetros";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Parâmetros</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="text-center">Parâmetros</h1>
+    <a href="/Parametro/Adicionar" class="btn btn-primary">Adicionar</a>
+    @if (@Model.Error != null)
+    {
+        <div class="alert alert-danger mt-2">
+            <span>@Model.Error</span>
+        </div>
+    }
+    @if (@Model.Mensagem != null)
+    {
+        <div class="alert alert-success mt-2">
+            <span>@Model.Mensagem</span>
+        </div>
+    }
+    <table class="table w-full mt-2">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Valor Kwh
+                </th>
+                <th>
+                    Consumo Alto 
+                </th>
+                <th>
+                    Consumo Médio
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ce in @Model.Parametros)
+            {
+                <tr>
+                    <td>@ce.Id</td>
+                    <td>@ce.Valorkwh</td>
+                    <td>@ce.FaixaConsumoAlta</td>
+                    <td>@ce.FaixaConsumoMedia</td>
+                    <td>
+                        <a class="text-primary" href="/Parametro/Editar/@ce.Id">Editar</a>
+                        &nbsp; &nbsp;
+                        <a class="text-danger" href="/Parametro/Deletar/@ce.Id">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

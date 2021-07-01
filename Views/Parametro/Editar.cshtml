@@ -1,0 +1,37 @@
+﻿@model mge.ViewModels.Parametro.EditarViewModel
+
+@{
+    ViewData["Title"] = "Parâmetros";
+}
+
+<div class="container">
+    <form action="/Parametro/Editar/@Model.Id" method="post">
+        <h1 class="text-center">Editar parâmetro</h1>
+        @if (@Model.errors != null)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in @Model.errors)
+                {
+                    <span>@error</span>
+                }
+            </div>
+        }
+    <div class="form-group">
+        <label for="ValorKwh">Valor kwh</label>
+        <input type="text" class="form-control" id="ValorKwh" name="ValorKwh" value="@Model.Valorkwh">
+    </div>
+    <div class="form-group">
+        <label for="faixaAlta">Faixa de Consumo Alta</label>
+        <input type="text" class="form-control" id="FaixaConsumoAlto" name="FaixaConsumoAlto" value="@Model.FaixaConsumoAlto">
+    </div>
+    <div class="form-group">
+        <label for="faizaMedia">Faixa de Consumo Média</label>
+        <input type="text" class="form-control" id="FaixaConsumoMedio" name="FaixaConsumoMedio" value="@Model.FaixaConsumoMedio"/>
+    </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            &nbsp; &nbsp; 
+            <a href="/Parametro">Voltar</a>
+        </div>
+    </form>
+</div>

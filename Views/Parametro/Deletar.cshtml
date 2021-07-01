@@ -1,0 +1,24 @@
+﻿@model mge.ViewModels.Parametro.DeletarViewModel
+
+@{
+    ViewData["Title"] = "Parâmetros";
+}
+
+<div class="container">
+    <form method="post" action="/Parametro/Deletar/@Model.Id">
+    <h1 class="text-center">Deletar parâmetro</h1>
+    <ul class="list-group mt-2">
+        <li class="list-group-item">Valor Kwh : @Model.ValorKwh</li>
+        <li class="list-group-item">Faixa de Consumo Alto : @Model.FaixaConsumoAlto</li>
+        <li class="list-group-item">Faixa de Consumo Médio : @Model.FaixaConsumoMedio</li>
+    </ul>
+    <p class="text-center mt-2">
+        Tem certeza que deseja remover este parâmetro?
+    </p>
+    <p class="text-center">
+        <button type="submit" class="btn btn-danger">Sim</button>
+        &nbsp; &nbsp;
+        <a href="/Categoria" class="btn-link">Não, voltar</a>
+    </p>
+    </form>
+</div>
