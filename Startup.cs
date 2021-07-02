@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using mge.Data;
+using mge.Models;
 using mge.Models.Categoria;
 using mge.Models.Item;
 using mge.Models.Parametro;
@@ -38,6 +39,7 @@ namespace mge
             services.AddTransient<CategoriaService>();
             services.AddTransient<ItemService>();
             services.AddTransient<ParametroService>();
+            services.AddTransient<RelatorioService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

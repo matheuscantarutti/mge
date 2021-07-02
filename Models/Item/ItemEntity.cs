@@ -17,5 +17,10 @@ namespace mge.Models.Item
         [Column(TypeName = ("decimal(15,2)"))]
         public decimal ConsumoWatts {get; set;}
         public int HorasUsoDiario {get; set;}
+
+
+        public  decimal CalcGastoEnergeticoMensal() {
+            return ((ConsumoWatts * HorasUsoDiario) * 30) / 1000;
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace mge.Models.Item
             _databaseContext = databaseContext;
         }
 
+        public ICollection<ItemEntity> ObterItensPorCategoria(int id) {
+
+            return _databaseContext.Items.Where(i => i.Categoria.Id.Equals(id)).ToList();
+        }
+
         public ICollection<ItemEntity> ObterTodos()
         {
             return _databaseContext.Items.Include(c => c.Categoria).ToList();

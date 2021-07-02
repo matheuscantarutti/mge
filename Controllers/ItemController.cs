@@ -45,7 +45,7 @@ namespace mge.Controllers
                     Descricao = item.Descricao,
                     DataFabricacao = item.DataFabricacao.ToShortDateString(),
                     Categoria = item.Categoria.Descricao,
-                    ConsumoWatts = item.ConsumoWatts.ToString("C"),
+                    ConsumoWatts = item.ConsumoWatts.ToString("N"),
                     HorasUsoDiario = item.HorasUsoDiario
                 });
             }

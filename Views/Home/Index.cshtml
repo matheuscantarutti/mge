@@ -1,8 +1,61 @@
-﻿@{
+﻿@model mge.ViewModels.Home.IndexViewModel
+
+@{
     ViewData["Title"] = "Página Inicial";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+    <div class="m-3">
+        <h1>Top 3 Categorias que mais consomem</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Consumo Mensal Kwh</th>
+                    <th scope="col">Valor Mensal Kwh</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ce in @Model.CategoriasConsumistas)
+                {
+                    <tr>
+                        <td>@ce.Posicao</td>
+                        <td>@ce.Categoria</td>
+                        <td>@ce.ConsumoMensalKwh</td>
+                        <td>@ce.ValorMensalKwh</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="m-3">
+        <h1>Top 5 Itens que mais consomem</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Consumo Mensal Kwh</th>
+                    <th scope="col">Valor Mensal Kwh</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ce in @Model.CategoriasConsumistas)
+                {
+                    <tr>
+                        <td>@ce.Posicao</td>
+                        <td>@ce.Categoria</td>
+                        <td>@ce.ConsumoMensalKwh</td>
+                        <td>@ce.ValorMensalKwh</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
