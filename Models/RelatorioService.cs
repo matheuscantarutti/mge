@@ -65,6 +65,40 @@ namespace mge.Models
 
             return consumos.OrderByDescending(i => i.ConsumoMensalKwh).Take(5).ToList();
         }
+
+        public Decimal consumoMensal() {
+            var itens = _itemService.ObterTodos();
+            decimal consumoMensal = 0;
+
+            foreach(var item in itens)
+            {
+                consumoMensal += item.CalcGastoEnergeticoMensal();
+            }
+
+            return consumoMensal;
+        }
+
+        public Decimal valorMensal() {
+            var parametro = _parametroService.ObterTodos().First();
+
+            return this.consumoMensal() * parametro.ValorKwh; 
+        }
+
+        public string faixaConsumo() {
+            var parametro = _parametroService.ObterTodos().First();
+            if (this.consumoMensal() >= parametro.FaixaConsumoAlto)
+            {
+                return "Alto";
+            }
+            else if (this.consumoMensal() >= parametro.FaixaConsumoMedio)
+            {
+                return "Médio";
+            }
+            else
+            {
+                return "Baixo";
+            }
+        }
     }
 
     public class ConsumoCategoria

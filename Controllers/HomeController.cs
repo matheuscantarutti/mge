@@ -55,6 +55,10 @@ namespace mge.Controllers
                 });
             }
 
+            vm.ConsumoMensal = _relatorioService.consumoMensal().ToString("N");
+            vm.ValorMensal = _relatorioService.valorMensal().ToString("C");
+            vm.faixaConsumo = _relatorioService.faixaConsumo();
+
             return View(vm);
         }
 

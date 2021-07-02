@@ -10,6 +10,9 @@ namespace mge.ViewModels.Home
         public ICollection<CategoriaConsumista> CategoriasConsumistas;
 
         public ICollection<ItemConsumista> ItensConsumistas;
+        public string ConsumoMensal;
+        public string ValorMensal;
+        public string faixaConsumo;
 
         public IndexViewModel()
         {

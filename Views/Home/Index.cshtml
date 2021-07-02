@@ -4,66 +4,82 @@
     ViewData["Title"] = "Página Inicial";
 }
 
-<div class="d-flex justify-content-between">
-    <div>
-        <div class="m-3">
-            <h3>Top 3 Categorias que mais consomem</h3>
-
-            <table class="table table-relatorio">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Consumo Mensal Kwh</th>
-                        <th scope="col">Valor Mensal Kwh</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var ce in @Model.CategoriasConsumistas)
-                    {
-                        <tr>
-                            <td>@ce.Posicao</td>
-                            <td>@ce.Categoria</td>
-                            <td>@ce.ConsumoMensalKwh</td>
-                            <td>@ce.ValorMensalKwh</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+<div class="d-flex flex-column">
+    <div class="d-flex justify-content-between m-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Faixa de Consumo</h3>
+                <p>@Model.faixaConsumo</p>
+            </div>
         </div>
-
-        <div class="m-3">
-            <h3>Top 5 Itens que mais consomem</h3>
-
-            <table class="table table-relatorio">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Item</th>
-                        <th scope="col">Consumo Mensal Kwh</th>
-                        <th scope="col">Valor Mensal Kwh</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var ce in @Model.ItensConsumistas)
-                    {
-                        <tr>
-                            <td>@ce.Posicao</td>
-                            <td>@ce.Item</td>
-                            <td>@ce.ConsumoMensalKwh</td>
-                            <td>@ce.ValorMensalKwh</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="card-body">
+                <h3>Consumo Mensal</h3>
+                <p>@Model.ConsumoMensal Kilowatts</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h3>Valor Mensal</h3>
+                <p>@Model.ValorMensal</p>
+            </div>
         </div>
     </div>
-    <div class="d-flex flex-column">
-        <h3>Faixa de Consumo</h3>
-        <h3>Consumo Mensal</h3>
-        <h3>Valor Mensal</h3>
-    </div>
-</div>
+            <div class="d-flex justify-content-between">
+                <div class="m-3">
+                    <h3>Top 3 Categorias que mais consomem</h3>
+
+                    <table class="table table-relatorio">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Consumo Mensal Kwh</th>
+                                <th scope="col">Valor Mensal Kwh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ce in @Model.CategoriasConsumistas)
+                            {
+                                <tr>
+                                    <td>@ce.Posicao</td>
+                                    <td>@ce.Categoria</td>
+                                    <td>@ce.ConsumoMensalKwh</td>
+                                    <td>@ce.ValorMensalKwh</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="m-3">
+                    <h3>Top 5 Itens que mais consomem</h3>
+
+                    <table class="table table-relatorio">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Consumo Mensal Kwh</th>
+                                <th scope="col">Valor Mensal Kwh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ce in @Model.ItensConsumistas)
+                            {
+                                <tr>
+                                    <td>@ce.Posicao</td>
+                                    <td>@ce.Item</td>
+                                    <td>@ce.ConsumoMensalKwh</td>
+                                    <td>@ce.ValorMensalKwh</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
     
 
