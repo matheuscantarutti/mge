@@ -25,17 +25,33 @@ namespace mge.Controllers
         public IActionResult Index()
         {
             var vm = new IndexViewModel();
-            var categoiasConsumistas = _relatorioService.categoriasConsumistas();
+
+            var categoriasConsumistas = _relatorioService.categoriasConsumistas();
 
             var posicao = 1;
 
-            foreach (var consumoCategoria in categoiasConsumistas) {
+            foreach (var consumoCategoria in categoriasConsumistas) {
                 vm.CategoriasConsumistas.Add(new CategoriaConsumista()
                 {
                     Posicao = (posicao++).ToString(),
                     Categoria = consumoCategoria.Categoria,
                     ConsumoMensalKwh = consumoCategoria.ConsumoMensalKwh.ToString("N"),
                     ValorMensalKwh = consumoCategoria.ValorMensalKwh.ToString("C")
+                });
+            }
+
+            posicao = 1;
+
+            var itensConsumistas = _relatorioService.itensConsumistas();
+
+            foreach(var item in itensConsumistas)
+            {
+                vm.ItensConsumistas.Add(new ItemConsumista()
+                {
+                    Posicao = (posicao++).ToString(),
+                    Item = item.Item,
+                    ConsumoMensalKwh = item.ConsumoMensalKwh.ToString("N"),
+                    ValorMensalKwh = item.ValorMensalKwh.ToString("C")
                 });
             }
 

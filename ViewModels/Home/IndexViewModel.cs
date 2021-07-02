@@ -9,9 +9,12 @@ namespace mge.ViewModels.Home
     {
         public ICollection<CategoriaConsumista> CategoriasConsumistas;
 
+        public ICollection<ItemConsumista> ItensConsumistas;
+
         public IndexViewModel()
         {
             CategoriasConsumistas = new List<CategoriaConsumista> ();
+            ItensConsumistas = new List<ItemConsumista>();
         }
     }
 
@@ -22,6 +25,14 @@ namespace mge.ViewModels.Home
         public string ConsumoMensalKwh { get; set; }
         public string ValorMensalKwh { get; set; }
 
+    }
+
+    public class ItemConsumista
+    {
+        public string Posicao { get; set; }
+        public string Item { get; set; }
+        public string ConsumoMensalKwh { get; set; }
+        public string ValorMensalKwh { get; set; }
     }
 
     

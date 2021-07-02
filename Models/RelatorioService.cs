@@ -48,6 +48,23 @@ namespace mge.Models
 
             return consumos.OrderByDescending(c => c.ConsumoMensalKwh).Take(3).ToList();
         }
+
+        public ICollection<ConsumoItem> itensConsumistas() {
+            var itens = _itemService.ObterTodos();
+            var consumos = new List<ConsumoItem>();
+            var parametro = _parametroService.ObterTodos().First();
+
+            foreach (var item in itens) { 
+                consumos.Add(new ConsumoItem()
+                {
+                    Item = item.Nome,
+                    ConsumoMensalKwh = item.CalcGastoEnergeticoMensal(),
+                    ValorMensalKwh = parametro.ValorKwh * item.CalcGastoEnergeticoMensal()
+                });
+            }
+
+            return consumos.OrderByDescending(i => i.ConsumoMensalKwh).Take(5).ToList();
+        }
     }
 
     public class ConsumoCategoria
@@ -58,5 +75,14 @@ namespace mge.Models
 
         public decimal ValorMensalKwh { get; set; }
 
+    }
+
+    public class ConsumoItem
+    {
+        public string Item { get; set; }
+
+        public decimal ConsumoMensalKwh { get; set; }
+
+        public decimal ValorMensalKwh { get; set; }
     }
 }
